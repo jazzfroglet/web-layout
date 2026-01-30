@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Layout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;			 
+            color: #1f3b4d;
+        }
+
+        header {
+            background: linear-gradient(to bottom, #e9f7ff, #bcdff6);
+            border-bottom: 1px solid #9cc6e3;
+            padding: 15px;
+            text-align: center;
+            box-shadow: inset 0 1px 0 #ffffff;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 34px;
+            color: #2b5f7a;
+            text-shadow: 0 1px 0 #ffffff;
+        }
+
+        h3 {
+            margin: 4px 0 0;
+            font-size: 16px;
+            color: #4f7f99;
+        }
+
+        ul.nav {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 6px;
+            background: linear-gradient(to bottom, #dff3ff, #b3daf2);
+            border-bottom: 1px solid #9fc5dd;
+        }
+
+        ul.nav li {
+            margin-right: 6px;
+        }
+
+        ul.nav li a {
+            display: block;
+            padding: 10px 18px;
+            text-decoration: none;
+            color: #2b5f7a;
+            background: linear-gradient(to bottom, #ffffff, #cfe9fb);
+            border-radius: 10px;
+            box-shadow: inset 0 1px 0 #ffffff, 0 1px 2px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
+        }
+
+        ul.nav li a:hover {
+            background: linear-gradient(to bottom, #eaffea, #b7e6c1);
+            color: #1f4d2b;
+        }
+
+        .container {
+            display: flex;
+            height: 400px;
+            margin: 20px;
+            gap: 15px;
+        }
+
+        .navside {
+            width: 30%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(210,235,245,0.9));
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: inset 0 1px 0 #ffffff, 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .navside ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navside ul li a {
+            display: block;
+            padding: 10px 14px;
+            margin-bottom: 6px;
+            text-decoration: none;
+            color: #2b5f7a;
+            background: linear-gradient(to bottom, #ffffff, #d6eefc);
+            border-radius: 12px;
+            box-shadow: inset 0 1px 0 #ffffff, 0 1px 2px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .navside ul li a:hover {
+            background: linear-gradient(to bottom, #eaffea, #b7e6c1);
+        }
+
+ul.nav li.dropdown {
+    position: relative;
+}
+
+ul.nav li .dropbtn {
+    display: block;
+    padding: 10px 18px;
+    text-decoration: none;
+    color: #2b5f7a;
+    background: linear-gradient(to bottom, #ffffff, #cfe9fb);
+    border-radius: 10px;
+    box-shadow: inset 0 1px 0 #ffffff, 0 1px 2px rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+
+ul.nav li .dropbtn:hover {
+    background: linear-gradient(to bottom, #eaffea, #b7e6c1);
+    color: #1f4d2b;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: #ffffff;
+    min-width: 180px;
+    border-radius: 12px;
+    padding: 6px 0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 16px;
+    color: #2b5f7a;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background: #eaffea;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+        main#content {
+            flex: 1;
+            padding: 25px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(230,248,255,0.95));
+            border-radius: 18px;
+            box-shadow: inset 0 1px 0 #ffffff, 0 4px 12px rgba(0,0,0,0.15);
+            overflow-y: auto;
+        }
+
+        main h2 {
+            color: #2b5f7a;
+            text-shadow: 0 1px 0 #ffffff;
+        }
+
+			table {
+    			width: 100%;
+    			border-collapse: collapse;
+    			margin-top: 15px;
+    			font-size: 14px;
+}
+
+			th, td {
+    			padding: 10px 12px;
+    			border: 1px solid #b5d4ea;
+    			text-align: left;
+    			vertical-align: top;
+}
+
+			th {
+    			background: linear-gradient(to bottom, #dff3ff, #b3daf2);
+    			color: #2b5f7a;
+}
+
+			td {
+    			background: #ffffff;
+}
+
+			tr:hover td {
+    			background: #eef8ff;
+}
+
+        footer {
+            margin: 15px;
+            padding: 10px;
+            text-align: center;
+            background: linear-gradient(to bottom, #e9f7ff, #bcdff6);
+            border-radius: 14px;
+            color: #2b5f7a;
+            box-shadow: inset 0 1px 0 #ffffff, 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+.section-groups {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.section-box {
+    flex: 1;
+    min-width: 200px;
+}
+
+			.tool-pic {
+    			width: 100px;
+    			height: 60px;
+    			object-fit: cover;
+    			border-radius: 12px;
+    			display: block;
+    			margin: auto;
+    			box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+				.hover-box {
+    				width: fit-content;
+    				padding: 10px;
+    				background: #dff3ff;
+    				border-radius: 10px;
+    				cursor: pointer;
+}
+
+				.hover-answers {
+    				display: none;
+    				margin-top: 10px;
+}
+
+				.hover-box:hover .hover-answers {
+    				display: block;
+}
+
+			.bold {
+				font-weight: bold;
+			}
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>FarmWise</h2>
+    <h3>An Interactive ICT-Based Learning Website</h3>
+</header>
+
+<ul class="nav">
+    <li><a onclick="loadTopNav('Home')">Home</a></li>
+
+    <li class="dropdown">
+        <a class="dropbtn" onclick="toggleDropdown(event)">Activities</a>
+        <div class="dropdown-content">
+            <a onclick="loadTopNav('Activity 1')">Activity 1</a>
+            <a onclick="loadTopNav('Activity 2')">Activity 2</a>
+            <a onclick="loadTopNav('Activity 3')">Activity 3</a>
+        </div>
+    </li>
+
+    <li class="dropdown">
+        <a class="dropbtn" onclick="toggleDropdown(event)">Assessments</a>
+        <div class="dropdown-content">
+            <a onclick="loadTopNav('Assessment 1')">Assessment 1</a>
+            <a onclick="loadTopNav('Assessment 2')">Assessment 2</a>
+            <a onclick="loadTopNav('Assessment 3')">Assessment 3</a>
+        </div>
+    </li>
+
+    <li><a onclick="loadTopNav('References')">References</a></li>
+    <li><a onclick="loadTopNav('About')">About</a></li>
+</ul>
+
+<div class="container">
+    <section class="navside">
+        <ul>
+            <li><a onclick="loadContent('School Profile')">Content</a></li>
+            <li><a onclick="loadContent('Performance Standard')">Performance Standard</a></li>
+            <li><a onclick="loadContent('Content Standard')">Content Standard</a></li>
+            <li><a onclick="loadContent('Learning Competencies')">Learning Competencies</a></li>
+            <li><a onclick="loadContent('Objectives')">Objectives</a></li>
+        </ul>
+    </section>
+
+    <main id="content">
+        <h2>FarmWise</h2>
+    <p>Welcome to FarmWise, an interactive ICT-based learning website designed
+        to help students understand poultry and livestock tools and equipment.
+    </p>
+    <p>
+        This website contains lessons, activities, and assessments that support
+        TLE learning in a simple and organized way.
+    </p>
+</main>
+</div>
+
+<footer>
+    <p>&copy Fourth Year Students 2025-2026</p>
+</footer>
+
+<script>
+function loadContent(section) {
+    const content = document.getElementById('content');
+
+    if (section === 'School Profile') {
+        content.innerHTML = `
+            <h2>Poultry and Livestock Tools and Equipment</h2>
+				<p>Poultry and livestock tools and equipment are essential in maintaining the health, safety, and productivity of farm animals. These tools help farmers manage feeding, housing, breeding, cleaning, and health care efficiently while reducing labor and animal stress.</p>
+				<h3>Common Poultry Tools and Equipment</h3>
+				<table>
+					<tr>
+						<th>Tool / Equipment</th>
+						<th>Uses / Functions</th>
+					</tr>
+					<tr>
+						<td><img src="feeder.jpeg"class="tool-pic"></td>
+						<td><span class="bold">Feeders and Waterers</span> - Provide birds with clean food and water at all times.</td>
+						</tr>
+						<tr>
+						<td><img src="heatlamp.jpeg"class="tool-pic"></td>
+						<td><span class="bold">Brooders and Heat Lamps</span> - Supply warmth to chicks during their early growth stages.</td>
+						</tr>
+						<tr>
+						<td><img src="incubator.jpeg"class="tool-pic"></td>
+						<td><span class="bold">Incubators</span> - Used for hatching eggs under controlled temperature and humidity.</td>
+						</tr>
+						<tr>
+						<td><img src="eggtray.jpeg"class="tool-pic"></td>
+						<td><span class="bold">Egg Trays and Nesting Boxes</span> - Help collect and protect eggs from damage.</td>
+						</tr>
+						<tr>
+						<td><img src="vaccination.jpeg"class="tool-pic"></td>
+						<td><span class="bold">Vaccination and Health Tools</span> - Used to prevent and control poultry diseases.</td>
+				</table>
+			<h3>Common Livestock Tools and Equipment</h3>
+            <table>
+					<tr>
+						<th>Tool / Equipment</th>
+						<th>Uses / Functions</th>
+						</tr>
+						<tr>
+						<td><img src="feeding.jpeg"class="tool-pic"></td>
+						<td><span class="bold">Feed Troughs and Water Tanks</span> - Ensure animals receive proper nutrition and hydration.</td>
+						</tr>
+						<tr>
+						<td><img src="milking.jpeg"class="tool-pic"></td>
+						<td><span class="bold">Milking Machines</span> - Used in dairy farming to extract milk hygienically and efficiently.</td>
+						</tr>
+						<tr>
+						<td><img src="feeding.jpeg"class="tool-pic"></td>
+						<td><span class="bold">Fencing and Restraining Equipment</span> - Keep animals secure and prevent injuries.</td>
+						</tr>
+						<tr>
+						<td><img src="grooming.jpeg"class="tool-pic"></td>
+						<td><span class="bold">Grooming Tools</span> - Maintain animal cleanliness and comfort.</td>
+						</tr>
+						<tr>
+						<td><img src="veterinary.jpeg"class="tool-pic"></td>
+						<td><span class="bold">Veterinary Tools</span> - Assist in treating and monitoring animal health.</td>
+				</table>
+				<p>Using appropriate tools and equipment improves farm efficiency, ensures animal welfare, increases production, and helps maintain cleanliness and safety on the farm.</p>
+            </ul>
+        `;
+    }
+
+    if (section === 'Performance Standard') {
+        content.innerHTML = `<h2>Performance Standard</h2>
+			<p>The learner demonstrates an understanding of the proper identification, selection, use, and maintenance of poultry and livestock tools and equipment in accordance with established agricultural practices. The learner performs basic poultry and livestock farm operations such as feeding, watering, housing, cleaning, and basic animal health care by following prescribed safety procedures, sanitation requirements, and animal welfare standards.</p>
+			<p>The learner applies appropriate work values, including responsibility, efficiency, and care in handling tools and equipment, and observes proper storage and maintenance to ensure their usability and longevity. Through correct application of farm procedures and proper use of tools, the learner contributes to improved farm productivity, prevention of accidents, and the promotion of sustainable and ethical poultry and livestock production practices consistent with the standards set by the Technical Education and Skills Development Authority (TESDA) and the Department of Education (DepEd) TLE curriculum.</p>
+			`;
+    }
+
+    if (section === 'Content Standard') {
+        content.innerHTML = `<h2>Content Standard</h2>
+			<p>The learner demonstrates understanding of the concepts, principles, and importance of poultry and livestock tools and equipment used in agricultural production. This includes knowledge of the different types and classifications of tools and equipment, their specific functions, proper selection, correct usage, and basic care and maintenance. The learner also understands the role of these tools in supporting efficient farm operations, improving productivity, and ensuring the quality of poultry and livestock products.</p>
+			<p>In addition, the learner understands the importance of observing safety precautions, sanitation practices, and animal welfare standards in the use of agricultural tools and equipment. This understanding promotes responsible tool handling, prevents accidents and equipment damage, and supports sustainable, ethical, and environmentally responsible poultry and livestock farming practices in accordance with the TLE curriculum.</p>
+			`;
+    }
+
+    if (section === 'Learning Competencies') {
+        content.innerHTML = `<h2>Learning Competencies</h2>
+			<h3>At the end of the lesson, the learner is able to:</h3>
+				<ul>
+					<li>Identify the different poultry and livestock tools and equipment used in agricultural production</li>
+					<li>Describe the functions and proper uses of each poultry and livestock tool and equipment</li>
+					<li>Classify tools and equipment according to their purpose and area of use</li>
+					<li>Demonstrate proper handling, care, and basic maintenance of poultry and livestock tools and equipment</li>
+					<li>Observe safety procedures, sanitation practices, and animal welfare standards in using farm tools</li>
+					<li>Apply correct tool usage in basic poultry and livestock farm activities such as feeding, cleaning, and housing</li>
+				`;
+    }
+
+    if (section === 'Objectives') {
+        content.innerHTML = `<h2>Objectives</h2>
+ <ol>
+   <li><span class="bold">Identify</span> at least five (5) common poultry and livestock tools and equipment and state their basic functions accurately through a short written or oral assessment conducted within the class period.</li>
+	<li><span class="bold">Explain</span> the importance of using appropriate poultry and livestock tools and equipment in maintaining animal health, safety, and farm productivity by participating in guided discussions and completing assigned learning tasks during the lesson.</li>
+	<li><span class="bold">Describe</span> the correct and safe procedures in handling selected poultry and livestock tools and equipment by following proper safety precautions, sanitation practices, and animal welfare standards as observed during class activities.</li>
+	<li><span class="bold">Demonstrate</span> responsible attitudes and values toward the use of poultry and livestock tools and equipment by showing care, cleanliness, and proper handling during classroom simulations, group work, or demonstrations.</li>
+	<li><span class="bold">Apply</span> learned knowledge by selecting the appropriate tool or equipment for specific poultry and livestock farm tasks within a given activity, showing understanding of efficiency, safety, and proper tool usage by the end of the lesson.</li>
+</ol>
+			`;
+    }
+}
+
+</script>
+
+<script>
+function loadTopNav(page) {
+    const content = document.getElementById('content');
+
+    if (page === 'Home') {
+        content.innerHTML = `
+            <h2>Mission</h2>
+            <p>To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where: Students learn in a child-friendly, gender-sensitive, safe, and motivating environment.
+Teachers facilitate learning and constantly nurture every learner; administrators and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen; family, community, and other stakeholders are actively engaged and share responsibility for developing life-long learners.</p>
+            <h2>Vision</h2>
+            <p>We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation. As a learner-centered public institution, the Department of Education continuously improves itself to better serve its stakeholders.</p>
+            <h2>Core Values</h2>
+            <ul>
+             <li>Maka-Diyos</li>
+             <li>Maka-tao</li>
+             <li>Makakalikasan</li>
+             <li>Makabansa</li>
+           </ul>  
+        `;
+    }
+
+    if (page === 'Activity 1') {
+        content.innerHTML = `
+             <h2>Activity 1: Matching Type</h2>
+
+        <p><strong>Directions:</strong> Match Column A with the correct answer in Column B.</p>
+
+        <table>
+            <tr>
+                <th>Column A</th>
+                <th>Column B</th>
+            </tr>
+            <tr>
+                <td>1. Brooders and Heat Lamps</td>
+                <td>A. Used to prevent and control poultry diseases</td>
+            </tr>
+            <tr>
+                <td>2. Incubators</td>
+                <td>B. Provide birds with clean food and water at all times</td>
+            </tr>
+            <tr>
+                <td>3. Egg Trays and Nesting Boxes</td>
+                <td>C. Used for hatching eggs under controlled temperature and humidity</td>
+            </tr>
+            <tr>
+                <td>4. Vaccination and Health Tools</td>
+                <td>D. Help collect and protect eggs from damage</td>
+            </tr>
+            <tr>
+                <td>5. Feeders and Waterers</td>
+                <td>E. Supply warmth to chicks during their early growth stages</td>
+            </tr>
+        </table>
+
+        <br>
+
+      <details>
+    <summary><strong>Click to view Answer Key</strong></summary>
+    <p>
+        1. E<br>
+        2. C<br>
+        3. D<br>
+        4. A<br>
+        5. B
+    </p>
+</details>
+
+</div>
+
+`;
+}
+
+	if (page === 'Activity 2') {
+        content.innerHTML = `
+				<h2>Activity 2: Tool Selection and Farm Care Challenge</h2>
+
+		<p><strong>Directions:</strong>Read each farm situation carefully. Choose the correct poultry or livestock tool that should be used.
+Write your answer and briefly explain why it is the correct tool.</p>
+
+<h3>Farm Situations</h3>
+
+<p><strong>1.</strong> Newly hatched chicks are shivering because the weather is cold.</p>
+<p>What tool should be used? ____________________</p>
+<p>Why? ____________________</p>
+
+<p><strong>2.</strong> A farmer wants to collect eggs safely without breaking them.</p>
+<p>What tool should be used? ____________________</p>
+<p>Why? ____________________</p>
+
+<p><strong>3.</strong> A cow needs to be milked in a clean and safe way.</p>
+<p>What tool should be used? ____________________</p>
+<p>Why? ____________________</p>
+
+<p><strong>4.</strong> Chickens need clean water to stay healthy.</p>
+<p>What tool should be used? ____________________</p>
+<p>Why? ____________________</p>
+
+<p><strong>5.</strong> Farm animals need to be kept inside their area to avoid accidents.</p>
+<p>What tool should be used? ____________________</p>
+<p>Why? ____________________</p>
+
+<h3>Tool Care Task</h3>
+
+<p>Choose <strong>one tool</strong> you listed above and answer:</p>
+
+<p>Tool Name: ___________________________</p>
+
+<p>Write two ways to take care of this tool:</p>
+<p>1. ___________________________</p>
+<p>2. ___________________________</p>
+
+<h3>Reflection</h3>
+
+<p>
+Why is it important to use the correct tools in poultry and livestock farming?
+</p>
+
+<p>______________________________________________________________________</p>
+
+<br>
+
+</div>
+
+`;
+}
+
+	if (page === 'Activity 3') {
+        content.innerHTML = `
+			<h2>Activity 3: Farm Tools Check-Up</h2>
+
+<p><strong>Directions:</strong> Read each question carefully. Choose the correct answer and write it on the blank.</p>
+
+<br>
+
+<p><strong>1.</strong> What tool is used to keep young chicks warm and protected?</p>
+<p>______________________________</p>
+
+<br>
+
+<p><strong>2.</strong> Which equipment is used to supply clean water to poultry and prevent spillage?</p>
+<p>______________________________</p>
+
+<br>
+
+<p><strong>3.</strong> What tool is used to collect milk from cows or goats in a clean manner?</p>
+<p>______________________________</p>
+
+<br>
+
+<p><strong>4.</strong> Which tool helps control large animals like cows during handling or treatment?</p>
+<p>______________________________</p>
+
+<br>
+
+<p><strong>5.</strong> What equipment is used to store eggs safely to avoid breakage?</p>
+<p>______________________________</p>
+
+<br>
+
+<p><strong>6.</strong> Which tool is used to measure the weight of livestock?</p>
+<p>______________________________</p>
+
+<br>
+
+<p><strong>7.</strong> What tool is used to trim the hooves of farm animals?</p>
+<p>______________________________</p>
+
+<br><br>
+
+<details>
+ <summary><strong>Click to view Answer Key</strong></summary>
+    <p>
+        1. Brooder<br>
+            2. Poultry waterer<br>
+            3. Milking pail<br>
+            4. Halter<br>
+            5. Egg tray / Egg crate<br>
+            6. Weighing scale<br>
+            7. Hoof trimmer
+    </p>
+</details>
+
+    </div>
+        </div>
+    `;
+}
+
+    if (page === 'Assessment 1') {
+        content.innerHTML = `
+           <h2>Assessment 1</h2>
+<br>
+					<p><strong>1.</strong> What is crop production mainly focused on?</p>
+					<p>A. Selling machines</p>
+					<p>B. Growing plants for food and raw materials</p>
+					<p>C. Training animals</p>
+					<p>D. Mining resources</p>
+
+					<p><strong>2.</strong> Which activity helps improve crop quality?</p>
+					<p>A. Proper watering and fertilizing</p>
+					<p>B. Ignoring the plants</p>
+					<p>C. Cutting crops early</p>
+					<p>D. Leaving soil untreated</p>
+
+					<p><strong>3.</strong> Which of the following is a business opportunity in crop production?</p>
+					<p>A. Selling imported gadgets</p>
+					<p>B. Managing a rice mill</p>
+					<p>C. Driving public transport</p>
+					<p>D. Working in an office</p>
+
+					<p><strong>4.</strong> What skill is MOST important for a crop farmer?</p>
+					<p>A. Painting</p>
+					<p>B. Plant care and monitoring</p>
+					<p>C. Acting</p>
+					<p>D. Singing</p>
+
+					<p><strong>5.</strong> Which is NOT related to crop agribusiness?</p>
+					<p>A. Crop processing</p>
+					<p>B. Crop marketing</p>
+					<p>C. Crop storage</p>
+					<p>D. Video editing</p>
+
+					<p><strong>6.</strong> What does agribusiness include?</p>
+					<p>A. Farming and selling agricultural products</p>
+					<p>B. Playing farm games</p>
+					<p>C. Watching documentaries</p>
+					<p>D. Writing fiction</p>
+
+					<p><strong>7.</strong> Which product is made from crops?</p>
+					<p>A. Cement</p>
+					<p>B. Rice</p>
+					<p>C. Plastic</p>
+					<p>D. Steel</p>
+
+					<p><strong>8.</strong> What is a benefit of using modern technology in farming?</p>
+					<p>A. Slower production</p>
+					<p>B. Higher cost with no gain</p>
+				<p>C. Increased yield and efficiency</p>
+				<p>D. Crop damage</p>
+
+				<p><strong>9.</strong> Which factor positively affects crop production?</p>
+				<p>A. Good soil quality</p>
+				<p>B. Pest infestation</p>
+				<p>C. Drought</p>
+				<p>D. Plant diseases</p>
+
+				<p><strong>10.</strong> Which activity can be a business after harvesting crops?</p>
+				<p>A. Throwing crops away</p>
+				<p>B. Letting crops rot</p>
+				<p>C. Burning farm waste</p>
+				<p>D. Selling processed crop products</p>
+				
+				<br>
+				
+				<details>
+    <summary><strong>Answer Key</strong></summary>
+<br>
+	<h3>Assessment 1 Answer Key</h3>
+    <p>
+        1. B<br>
+    2. A<br>
+    3. B<br>
+    4. B<br>
+    5. D<br>
+    6. A<br>
+    7. B<br>
+    8. C<br>
+    9. A<br>
+	10. D
+    </p>
+</details>
+				
+				</div>
+				
+				`;
+}
+
+	if (page === 'Assessment 2') {
+        content.innerHTML = `
+					<h2>Assessment 2</h2>
+					<br>
+
+				<p><strong>1.</strong> Which job is related to crop production?</p>
+				<p>A. Farmer</p>
+				<p>B. Pilot</p>
+				<p>C. Seafarer</p>
+				<p>D. Guard</p>
+
+				<p><strong>2.</strong> Which is NOT a crop-based product?</p>
+				<p>A. Corn</p>
+				<p>B. Wheat</p>
+				<p>C. Smartphone</p>
+				<p>D. Rice</p>
+
+				<p><strong>3.</strong> Why is agriculture important in business?</p>
+				<p>A. It stops trading</p>
+				<p>B. It provides raw materials and income</p>
+				<p>C. It reduces food supply</p>
+				<p>D. It wastes resources</p>
+
+				<p><strong>4.</strong> Which skill helps farmers succeed?</p>
+				<p>A. Dancing</p>
+				<p>B. Singing</p>
+				<p>C. Acting</p>
+				<p>D. Farm planning</p>
+
+				<p><strong>5.</strong> How do farmers earn profit from crops?</p>
+<p>A. Selling harvested produce</p>
+				<p>B. Giving crops away</p>
+				<p>C. Ignoring harvest</p>
+				<p>D. Destroying crops</p>
+				
+				<br>
+				
+				<details>
+    <summary><strong>Answer Key</strong></summary>
+<br>
+				<h3>Assessment 2 Answer Key</h3>
+	<p>
+		1. A<br>
+    2. C<br>
+    3. B<br>
+    4. D<br>
+	5. A
+	</p>
+	<br>
+</details>
+				
+				</div>
+				
+				`;
+}
+				
+				if (page === 'Assessment 3') {
+        content.innerHTML = `
+			<h2>Assessment 3</h2>
+<br>
+<p><strong>1.</strong> Which tool is commonly used to cut or trim the beaks of chickens?</p>
+<p>A. Hoe</p>
+<p>B. Beak trimmer</p>
+<p>C. Spade</p>
+<p>D. Feed scoop</p>
+
+<p><strong>2.</strong> What equipment is used to keep poultry eggs warm until they hatch?</p>
+<p>A. Brooder</p>
+<p>B. Incubator</p>
+<p>C. Waterer</p>
+<p>D. Nest box</p>
+
+<p><strong>3.</strong> Which of the following is used to provide water to livestock?</p>
+<p>A. Feeder</p>
+<p>B. Waterer</p>
+<p>C. Syringe</p>
+<p>D. Hoof trimmer</p>
+
+<p><strong>4.</strong> A tool used to remove lice and other external parasites from poultry is called:</p>
+<p>A. Lice comb</p>
+<p>B. Milking machine</p>
+<p>C. Shears</p>
+<p>D. Scoop</p>
+
+<p><strong>5.</strong> Which equipment is used for milking cows efficiently?</p>
+<p>A. Milking machine</p>
+<p>B. Feed mixer</p>
+<p>C. Cage</p>
+<p>D. Beak trimmer</p>
+
+<p><strong>6.</strong> What is the purpose of a livestock syringe?</p>
+<p>A. To feed animals</p>
+<p>B. To administer vaccines or medicine</p>
+<p>C. To water animals</p>
+<p>D. To clean pens</p>
+
+<p><strong>7.</strong> Which tool is used to cut grass or hay for livestock feed?</p>
+<p>A. Scythe</p>
+<p>B. Hoe</p>
+<p>C. Beak trimmer</p>
+<p>D. Lice comb</p>
+
+<p><strong>8.</strong> A device that ensures animals get the right amount of feed is called:</p>
+<p>A. Feeder</p>
+<p>B. Waterer</p>
+<p>C. Brooder</p>
+<p>D. Incubator</p>
+
+<p><strong>9.</strong> Which equipment is used to separate grains from chaff for feeding poultry?</p>
+<p>A. Thresher</p>
+<p>B. Scoop</p>
+<p>C. Syringe</p>
+<p>D. Milking machine</p>
+
+<p><strong>10.</strong> What tool is used to trim the hooves of livestock such as cows and goats?</p>
+<p>A. Hoof trimmer</p>
+<p>B. Lice comb</p>
+<p>C. Beak trimmer</p>
+<p>D. Feed scoop</p>
+
+				<br>
+				
+				 
+	<details>
+    <summary><strong>Answer Key</strong></summary>
+<br>
+	<h3>Asssessment 3 Answer Key</h3>
+	<p>
+	1. B<br>
+    2. B<br>
+    3. B<br>
+    4. A<br>
+    5. A<br>
+    6. B<br>
+    7. A<br>
+    8. A<br>
+    9. A<br>
+	10. A
+	</p>
+</details>
+        `;
+    }
+
+    if (page === 'References') {
+        content.innerHTML = `
+            <h2>References</h2>
+            <ul>
+                <li>Ecochicks Poultry. (n.d.). Poultry farm tools and equipment. Retrieved from https://ecochickspoultry.com/poultry-farm-tools-and-equipment/</li>
+                <li>Vetline International. (n.d.). Basic equipment required for poultry farming: Guide for beginners. Retrieved from https://www.vetlineintl.com/basic-equipment-required-for-poultry-farming-guide-for-beginner/</li>
+                <li>Poultry Farm Spares. (n.d.). Basic poultry farm equipment list. Retrieved from https://poultryfarmspares.com/basic-poultry-farm-equipment-list/</li>
+					<li>V Poultry Farm Equipment. (n.d.). How poultry equipment works in a poultry farm. Retrieved from https://www.vpoultryfarmequipment.com/news/news2/headquarter_office/how_poultry_equipments_working_in_poultry_farm.html</li>
+					<li>Fresh Teacher. (n.d.). Agricultural tools and livestock management. Retrieved from https://fresh-teacher.github.io/s4/S4%20Agriculture.pdf</li>
+            </ul>
+        `;
+    }
+
+    if (page === 'About') {
+        content.innerHTML = `
+            <h2>About</h2>
+            <h3>Group Members</h3>
+
+<div class="section-groups">
+
+    <div class="section-box">
+        <h4>Kanlaon</h4>
+        <ul>
+            <li><a href="https://www.facebook.com/share/17aKzecEcd/?mibextid=wwXIfr">Abion, Rinse</a></li>
+            <li><a href="https://www.facebook.com/share/184LnGtPPo/?mibextid=wwXIfr">Basagan, John Simon</a></li>
+				<li><a href="https://www.facebook.com/share/1K7zfF2Wuz/?mibextid=wwXIfr">Lacida, Vincent</a></li>
+        </ul>
+    </div>
+
+    <div class="section-box">
+        <h4>Mayon</h4>
+        <ul>
+            <li><a href="https://www.facebook.com/share/1ah6L6QFCb/?mibextid=wwXIfr">Blanco, Jazztine</a></li>
+				<li><a href="https://www.facebook.com/share/14WeLUPZExT/?mibextid=wwXIfr">Lacatan, Thed</a></li>
+        </ul>
+    </div>
+</div>
+        `;
+    }
+}
+</script>
+
+</body>
+</html>
