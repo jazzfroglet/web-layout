@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Layout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Italianno&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Mrs+Saint+Delafield&family=Parisienne&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: "Pinyon Script", cursive;
+				background-color: #f7e0db;
+        }
+        
+        header {
+            background: #f7e0db;
+            padding: 15px;
+            text-align: center;
+				font-size: 40px;
+            color: black;
+        }
+
+        ul.nav {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background: #f7e0db;
+				font-size: 40px;
+        }
+
+        ul.nav li a {
+            display: block;
+            color: black;
+            padding: 14px 18px;
+            text-decoration: none;        
+        }
+
+        ul.nav li a:hover {
+            border-radius: 10px;
+        }
+
+        .container {
+            display: flex;
+            height: 420px;
+        }
+
+        .navside {
+            width: 30%;
+            background: #f7e0db;
+            padding: 20px;
+        }
+
+        .navside ul {
+             list-style-type: none;
+            padding: 0;
+        }
+
+			.navside ul li {
+				float: none;
+			}
+
+        .navside ul li a {
+            display: block;
+            padding: 12px;
+            color: black;
+            font-size: 40px;
+            text-decoration: none;
+            margin-bottom: 8px;
+        }
+
+        main#content {
+            flex: 1;
+            padding: 20px;
+            background: #f7e0db;
+            overflow-y: auto;
+            font-family: "Libre Baskerville", sans-serif;
+        }
+
+li {
+				float: left;
+}
+
+li a, dropbtn {
+				display: inline-block;
+				color: black;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+				background-color: lightgray;
+}
+
+.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: lightgreen;
+				min-width: 160px;
+}
+
+.dropdown-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+				text-align: left;
+}
+
+.dropdown-content a:hover {background-color: lightgray;}
+
+        footer {
+            background: #f7e0db;
+            padding: 10px;
+            text-align: center;
+            color: black;
+            font-size: 14px;
+				 font-family: "Libre Baskerville", cursive;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>sdhis</h2>
+    <h3>santo domingo integrated high school</h3>
+</header>
+
+<ul class="nav">
+    <li><a href="E - Portfolio">Home</a></li>
+    <li><a href="Quarter  1">First Quarter</a></li>
+    <li><a href="Quarter 2">Second Quarter</a></li>
+    <li><a href="https://www.facebook.com/share/17Lr15Ldsc">About</a></li>
+</ul>
+
+<div class="container">
+    <section class="navside">
+        <ul>
+            <li><a onclick="loadContent('School Profile')">School Profile</a></li>
+            <li><a onclick="loadContent('SHS')">shs</a></li>
+            <li><a onclick="loadContent('JHS')">jhs</a></li>
+        </ul>
+    </section>
+
+    <main id="content">
+        <h2>SDIHS</h2>
+        <p>Sto. Domingo Integrated High School was founded in 1971. It is located at Barangay Santo Domingo, City of Santa Rosa, Laguna.</p>
+    </main>
+</div>
+
+<footer>
+    <p>jazztineblanco@gmail.com | 09459613510</p>
+</footer>
+
+<script>
+function loadContent(section) {
+    const content = document.getElementById('content');
+
+    if (section === 'School Profile') {
+        content.innerHTML = `
+            <h2>Mission</h2>
+            <p>To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where: Students learn in a child-friendly, gender-sensitive, safe, and motivating environment.
+Teachers facilitate learning and constantly nurture every learner; administrators and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen; family, community, and other stakeholders are actively engaged and share responsibility for developing life-long learners.</p>
+            <h2>Vision</h2>
+            <p>We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation. As a learner-centered public institution, the Department of Education continuously improves itself to better serve its stakeholders.</p>
+            <h2>Core Values</h2>
+            <ul>
+             <li>Maka-Diyos</li>
+             <li>Maka-tao</li>
+             <li>Makakalikasan</li>
+             <li>Makabansa</li>
+           </ul>  
+        `;
+    }
+
+    if (section === 'SHS') {
+        content.innerHTML = `
+            <h2>SHS</h2>
+            <h3>Women</h3>
+            <ul>
+             <li>Ofelia Franco</li>
+             <li>Marineth Pulido</li>
+             <li>Joyce Caranay</li>
+            </ul> 
+            <h3>Men</h3>
+            <ul>
+             <li>Joseph Trajano</li>
+            </ul> 
+        `;
+    }
+
+    if (section === 'JHS') {
+        content.innerHTML = `
+            <h2>JHS</h2>
+            <h3>Mayon</h3>
+            <ul>
+              <li><a href="e - portfolio">Blanco, Jazztine Aalyah T.</a>></li>
+            </ul>  
+            <h3>Kanlaon</h3>
+            <ul>
+              <li>Abion, Rinse Genelie S.</li>
+            </ul>  
+        `;
+    }
+}
+</script>
+
+</body>
+</html>
